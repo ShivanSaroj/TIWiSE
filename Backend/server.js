@@ -128,7 +128,7 @@ app.use(session({
     cookie:{
         httpOnly: true,
     secure: true, // true if using https
-    sameSite: "lax", // or 'none' if secure
+    sameSite: "none", // or 'none' if secure
     }
 })
 );
