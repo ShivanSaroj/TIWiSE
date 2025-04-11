@@ -100,7 +100,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-<div>
+<div id="#compPrice">
   <CompetitorPriceComparison />
   </div>
      
