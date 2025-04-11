@@ -6,7 +6,10 @@ export const signup =async(username,password,email)=>{
         username,
         password,
         email,
-    });
+    },
+     {
+                              withCredentials:true, 
+     });
 };
 export const loginUser =async(username,password)=>{
     return await api.post("/auth/login",{
