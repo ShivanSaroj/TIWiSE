@@ -42,11 +42,12 @@ const io = new Server(server, {
 app.use(bodyParser.json());
 // app.use(cors());
 
-app.use(cors({
-  origin: `${process.env.FRONTEND_URL}`,  // your frontend origin
-  credentials: true                 // allow cookies
-}));
-app.options('*', cors());
+const corsOptions = {
+    origin: process.env.FRONTEND_URL || 'http://localhost:8080', // frontend origin
+    credentials: true,
+  };
+  
+  app.use(cors(corsOptions));
 const cron = require('node-cron'); 
 const geminiRoutes = require('./routes/geminiRoutes');
 const movieRoutes = require("./routes/movieRoutes");
@@ -114,12 +115,7 @@ app.use((req, res, next) => {
 app.use(express.urlencoded({ limit: "100mb", extended: true }));
 
 app.use(bodyParser.json());
-const corsOptions = {
-    origin: process.env.FRONTEND_URL || 'http://localhost:3000', // frontend origin
-    credentials: true,
-  };
-  
-  app.use(cors(corsOptions));
+
   
 app.use(session({
     secret: process.env.SESSION_SECRET || "secret",
