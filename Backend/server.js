@@ -46,6 +46,7 @@ app.use(cors({
   origin: `${process.env.FRONTEND_URL}`,  // your frontend origin
   credentials: true                 // allow cookies
 }));
+app.options('*', cors());
 const cron = require('node-cron'); 
 const geminiRoutes = require('./routes/geminiRoutes');
 const movieRoutes = require("./routes/movieRoutes");
